@@ -22,6 +22,8 @@ You can find more information on the official website: https://laravel-mix.com/
 # Start
 
 ```
+git clone https://github.com/giorgiopogliani/craftcms-starter-template.git website
+cd website
 composer install 
 cp .env.example .env
 php craft setup/security-key
