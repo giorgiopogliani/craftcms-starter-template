@@ -3,6 +3,7 @@
 This is a simple CraftCMS template with a few usefull plugins already installed: 
 ``` 
 "craftcms/redactor"
+"ether/seo"
 "marionnewlevant/picture"
 "sebastianlenz/linkfield"    
 ```
