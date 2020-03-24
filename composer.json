@@ -3,6 +3,7 @@
     "ext-json": "*",
     "craftcms/cms": "^3.4.0",
     "craftcms/redactor": "^2.6",
+    "ether/seo": "^3.6.3",
     "marionnewlevant/picture": "^2.2",
     "sebastianlenz/linkfield": "^1.0",
     "vlucas/phpdotenv": "^3.4.0"
