@@ -35,3 +35,8 @@ php craft install/craft
 yarn install
 yarn watch
 ```
+
+# Deploy
+
+There is a really simple deploy script in the root of the repo. You will need `lftp` if you use ftp to deploy your website or `rsync`if you use SSH. Add your credentials at the top of the file. There are a few command line options like `--watch=<folder to watch>` or `--build` to build css and js before deploy. 
+ 
