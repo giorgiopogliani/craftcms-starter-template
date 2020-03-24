@@ -25,6 +25,13 @@ You can find more information on the official website: https://laravel-mix.com/
 composer install 
 cp .env.example .env
 php craft setup/security-key
+mysql -uroot -p -e "create database 'example'"
+```
+
+Edit your `.env` to match your configuration.
+
+```
+php craft install/craft 
 yarn install
 yarn watch
 ```
