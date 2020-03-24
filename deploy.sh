@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-USER=""               #Your username
-PASS=""               #Your password
-HOST=""               #Keep just the address
-LCD="."               #Your local directory
-RCD="/public_html/"   #FTP server directory
+USER=""               # Your username
+PASS=""               # Your password
+HOST=""               # Keep just the address
+LCD="."               # Your local directory
+RCD="/public_html/"   # FTP server directory
+SSHCONFIG=""          # ssh -i '~/.ssh/idrsa'
 
 watch() {
   echo watching folder "$1"
@@ -22,13 +23,17 @@ watch() {
 }
 
 function sync(){
-  lftp -f "
-  open $HOST
-  user $USER $PASS
-  lcd $LCD
-  set ftp:ssl-allow no
-  mirror --exclude vendor --exclude web/cpresources  --exclude web/images --exclude storage --exclude .git --exclude node_modules  --exclude .idea --exclude .DS_Store --exclude deploy.sh --only-newer --reverse --delete --continue  --parallel=2 $LCD $RCD
-  "
+  if [[ ! -z "$SSH" ]]; then
+    rsync -r --update --exclude vendor --exclude web/cpresources  --exclude web/images --exclude storage --exclude .git --exclude node_modules  --exclude .idea --exclude .DS_Store --exclude deploy.sh -v -e "$SSHCONFIG" $LCD $USER@$HOST:$RCD
+  else
+    lftp -f "
+      open $HOST
+      user $USER $PASS
+      lcd $LCD
+      set ftp:ssl-allow no
+      mirror --exclude vendor --exclude web/cpresources  --exclude web/images --exclude storage --exclude .git --exclude node_modules  --exclude .idea --exclude .DS_Store --exclude deploy.sh --only-newer --reverse --delete --continue  --parallel=2 $LCD $RCD
+    "
+  fi
 }
 
 function put(){
@@ -54,6 +59,10 @@ while (( "$#" )); do
     -u|--upload)
       UPLOAD=$2
       shift 2
+      ;;
+    -s|--ssh)
+      SSH="true"
+      shift 1
       ;;
     --) # end argument parsing
       shift
