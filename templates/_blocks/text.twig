@@ -1,0 +1,17 @@
+{% import '_components/ui.twig' as ui %}
+
+<div class="container mx-auto justify-between items-center">
+	<div class="flex flex-wrap {% if block.flip %} flex-row-reverse {% endif %}">
+    <div class="w-full md:w-1/2 px-6 py-8 md:py-24 flex flex-col justify-center">
+      <div class="mb-6">
+        {{ ui.title(block.titile ?? 'Aliqua labore pariatur') }}
+      </div>
+      <div class="content">
+        {{ block.content ?? 'Labore irure cupidatat laborum mollit ut sint adipisicing. Exercitation commodo minim aute enim exercitation dolore. Adipisicing enim nulla nisi officia laboris nulla cupidatat proident et duis est non aliqua minim. Ut ex consectetur fugiat ad elit esse veniam consectetur ullamco Lorem consequat.' }}
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 px-6 py-8 md:py-24 flex flex-col justify-center" style="height: 400px">
+      {{ ui.image(block.image.one() ?? 'https://source.unsplash.com/random') }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{% macro title(text) %}
+  <div>
+    <h2 class="font-bold text-2xl leading-6">{{ text }}</h2>
+  </div>
+{% endmacro %}
+
+{% macro button(text) %}
+  <button class="button">
+    {{ text }}
+  </button>
+{% endmacro %}
+
+{% macro cta(link, class = '') %}
+  <a {{ link.getLinkAttributes() }} class="button {{ class }}">
+    {{ link.getText() }}
+  </a>
+{% endmacro %}
+
+{% macro image(image, config) %}
+  {% if image is iterable %}
+    {{ craft.picture.element(image, 'banner', config ?? {alt: image.title, class:'w-full h-full'})}}
+  {% else %}
+    <img alt="Image" class="object-cover object-center h-full w-full overflow-hidden" src="{{ image }}">
+  {% endif %}
+{% endmacro %}

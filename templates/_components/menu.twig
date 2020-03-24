@@ -1,0 +1,16 @@
+{% macro menu(slug) %}
+  {% set menuEntry = craft.entries.section('menu').slug(slug).one() %}
+  {% set menu = craft.entries.section('menu').descendantOf(menuEntry.id).all() %}
+  <ul class="flex">
+    {% for item in menu %}
+      <li class="uppercase px-3">
+        {% if not item.callToAction.isEmpty() %}
+          <a class="hover:underline" {{ item.callToAction.getLinkAttributes() }}
+             data-target="{{ item.callToAction.getUrl() }}">
+            {{ item.callToAction.getText() }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

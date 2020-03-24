@@ -1,0 +1,30 @@
+{% extends "_layouts/site" %}
+
+{% import "_components/ui.twig" as ui %}
+
+{% block main %}
+
+	{% if entry is defined %}
+		{% for block in entry.sections.all() %}
+			{% include '_blocks/' ~ block.type ~ '.twig' ignore missing %}
+		{% endfor %}
+	{% endif %}
+
+	<div class="container mx-auto">
+		<div class="px-6 py-8">
+			<div class="text-black bg-white p-24 shadow-lg rounded-sm text-center">
+				<div class="mb-6">
+					{{ ui.title('Hello, World!') }}
+				</div>
+				<div class="">
+					{{ ui.button('Build something!') }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include '_blocks/text.twig' with { block: { flip: false } } %}
+
+	{% include '_blocks/text.twig' with { block:{ flip: true } } %}
+
+{% endblock %}

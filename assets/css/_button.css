@@ -1,0 +1,19 @@
+.button {
+  @apply rounded-sm 
+        shadow
+        h-10
+        px-6
+        leading-9
+        font-semibold
+        transition
+        duration-100
+        ease-in
+        inline-block
+        bg-teal-400
+        ;
+
+  &:hover  {
+    @apply shadow-lg bg-teal-300;
+    transform: translateY(-1px);
+  }
+}

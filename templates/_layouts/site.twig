@@ -1,0 +1,13 @@
+{% extends "_layouts/base" %}
+
+{% block body %}
+
+  {% include '_layouts/_header.twig' %}
+
+  <main role="main">
+    {% block main %}{% endblock %}
+  </main>
+
+  {% include '_layouts/_footer.twig' %}
+
+{% endblock %}
