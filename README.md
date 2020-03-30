@@ -28,7 +28,7 @@ cd website
 composer install 
 cp .env.example .env
 php craft setup/security-key
-mysql -uroot -p -e "create database 'example'"
+mysql -uroot -p -e "create database example"
 ```
 
 Edit your `.env` to match your configuration.
