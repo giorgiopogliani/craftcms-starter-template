@@ -23,7 +23,7 @@ mix
     ])
     .version()
 
-if (process.env.NODE_ENV == "dev") {
+if (process.env.NODE_ENV == "development") {
     mix.browserSync({
         proxy: process.env.DEFAULT_SITE_URL,
         files: [
