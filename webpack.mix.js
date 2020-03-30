@@ -23,9 +23,9 @@ mix
     ])
     .version()
 
-if (process.env.ENVIRONMENT == "dev") {
+if (process.env.NODE_ENV == "dev") {
     mix.browserSync({
-        proxy: process.env.MIX_DEFAULT_SITE_URL,
+        proxy: process.env.DEFAULT_SITE_URL,
         files: [
             "assets/**/*.css",
             "assets/**/*.js",
@@ -34,8 +34,11 @@ if (process.env.ENVIRONMENT == "dev") {
     });
 }
 
-if (process.env.ENVIRONMENT == "production") {
+if (process.env.NODE_ENV == "production") {
     mix.purgeCss({
+        globs: [
+            path.join(__dirname, 'templates/**/*.twig'),
+        ],
         extensions: ['html', 'js', 'jsx', 'ts', 'tsx', 'php', 'vue', 'twig'],
     });
 }
