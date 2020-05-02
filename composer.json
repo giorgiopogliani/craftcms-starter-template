@@ -1,4 +1,13 @@
 {
+  "name": "giorgiopogliani/craftcms-starter-template",
+  "description": "Craft CMS Template",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "project",
+    "template"
+  ],
   "require": {
     "ext-json": "*",
     "craftcms/cms": "^3.4.0",
@@ -20,12 +29,14 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.0"
+      "php": "7.2"
     }
   },
   "scripts": {
     "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "@composer dump-autoload -o",
+      "@php craft setup/welcome"
     ]
   }
 }
