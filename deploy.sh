@@ -7,6 +7,20 @@ LCD="."               # Your local directory
 RCD="/public_html/"   # FTP server directory
 SSHCONFIG=""          # ssh -i '~/.ssh/idrsa'
 
+EXCLUDE=" 
+--exclude web/images \
+--exclude web/cpresources \
+--exclude vendor \
+--exclude storage \
+--exclude node_modules \
+--exclude express-form/_notifications \
+--exclude deploy.sh \
+--exclude .idea \
+--exclude .git \
+--exclude .env \
+--exclude .DS_Store \
+"
+
 watch() {
   echo watching folder "$1"
   while true
@@ -16,33 +30,38 @@ watch() {
           sleep 2
       else
           echo changed, "$files"
-          sync
+          push
           sleep 2
       fi
   done
 }
 
-function sync(){
-  if [[ ! -z "$SSH" ]]; then
-    rsync -r --update --exclude vendor --exclude web/cpresources  --exclude web/images --exclude storage --exclude .git --exclude node_modules  --exclude .idea --exclude .DS_Store --exclude deploy.sh -v -e "$SSHCONFIG" $LCD $USER@$HOST:$RCD
+function push(){
+  if [[ -n "$SSH" ]]; then
+    rsync -r --update $EXCLUDE -v -e "$SSHCONFIG" $LCD/$PUSH $USER@$HOST:$RCD/$PUSH
   else
     lftp -f "
       open $HOST
-      user $USER $PASS
+      user $USER '$PASS'
       lcd $LCD
       set ftp:ssl-allow no
-      mirror --exclude vendor --exclude web/cpresources  --exclude web/images --exclude storage --exclude .git --exclude node_modules  --exclude .idea --exclude .DS_Store --exclude deploy.sh --only-newer --reverse --delete --continue  --parallel=2 $LCD $RCD
+      mirror $EXCLUDE --only-newer --reverse --delete --continue --parallel=2 $LCD/$PUSH $RCD/$PUSH
     "
   fi
 }
 
-function put(){
-  lftp -f "
-  open $HOST
-  user $USER $PASS
-  set ftp:ssl-allow no
-  mput ./$1 $RCD
-  "
+function pull(){
+  if [[ -n "$SSH" ]]; then
+    rsync -r --update $EXCLUDE -v -e "$SSHCONFIG" $USER@$HOST:$RCD/$PULL $LCD/$PULL
+  else
+    lftp -f "
+      open $HOST
+      user $USER '$PASS'
+      lcd $LCD
+      set ftp:ssl-allow no
+      mirror $EXCLUDE --only-newer --delete --continue --parallel=2 $RCD/$PULL $LCD/$PULL
+    "
+  fi
 }
 
 PARAMS=""
@@ -56,13 +75,35 @@ while (( "$#" )); do
       WATCH=$2
       shift 2
       ;;
-    -u|--upload)
-      UPLOAD=$2
+    -u|--push)
+      PUSH=$2
+      shift 2
+      ;;
+    -p|--pull)
+      PULL=$2
       shift 2
       ;;
     -s|--ssh)
-      SSH="true"
+      SSH=true
       shift 1
+      ;;
+    -h|--help)
+      echo "
+Mini Craft Scripts 0.1
+
+  -u|--push  [path]   Upload stuff to server.
+  -p|--pull  [path]   Download stuff from server.
+  -w|--watch [path]   Watch for local filesystem changes.
+  -s|--ssh            Sync stuff with ssh configuration, default is ftp.
+  -b|--build          Run yarn dev before deploy.
+  -h|--help           This help.
+
+Example:
+bash deploy.sh --ssh --watch templates
+bash deploy.sh --pull web/images
+bash deploy.sh --build 
+      "
+      exit 0
       ;;
     --) # end argument parsing
       shift
@@ -83,14 +124,12 @@ if [[ -n "$BUILD" ]]; then
   yarn dev
 fi
 
-
-if [[ -n "$UPLOAD" ]]; then
-  put "$UPLOAD"
-  exit 1
-fi
-
-if [[ ! -z "$WATCH" ]]; then
-    watch $WATCH
+if [[ -n "$WATCH" ]]; then
+    watch "$WATCH"
 else
-    sync
+  if [[ -n "$PULL" ]]; then
+    pull
+  else 
+    push
+  fi
 fi
