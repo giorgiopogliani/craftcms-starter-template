@@ -35,6 +35,7 @@
   "scripts": {
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+      "@composer install",
       "@composer dump-autoload -o",
       "@php craft setup/welcome"
     ]
