@@ -33,9 +33,8 @@
     }
   },
   "scripts": {
-    "post-root-package-install": [
+    "post-create-project-cmd"": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-      "@composer install",
       "@composer dump-autoload -o",
       "@php craft setup/welcome"
     ]
