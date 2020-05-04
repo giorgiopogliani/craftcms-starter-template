@@ -8,7 +8,7 @@ This is a simple CraftCMS template with a few usefull plugins already installed:
 "sebastianlenz/linkfield"    
 ```
 
-All the styles is done with `tailwindcs` framework and all the configuration is already done with the help of `laravel-mix`. 
+All the styles is done with `tailwindcss` framework and all the configuration is already done with the help of `laravel-mix`. 
 When developing your theme you can use `yarn watch` and browsersync is already configured. The `DEFAULT_SITE_URL` will be used as proxy for browsersync to connect to reach the website, but you can edit this behaviour in the `webpack.mix.js`.
 
 ```
