@@ -12,7 +12,7 @@
 <title>{{ seo.title }}</title>
 
 <meta name="description" content="{{ seo.description }}"/> {% set fb = seo.social.facebook -%}
-<meta name="keywords" content="{{ seo.keywords|join(',') }}">
+<meta name="keywords" content="{{ seo.keywords|map(p => "#{p.keyword}")|join(',') }}">
 
 <meta property="fb:app_id" content="{{ fb.handle }}">
 <meta property="og:url" content="{{ craft.app.request.absoluteUrl }}"/>
