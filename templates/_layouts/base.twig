@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.language }}">
 <head>
-  {% block head %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}">
-    <title>{{ currentSite.name }}</title>
-  {% endblock %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}">
+  {% block head %}{% endblock %}
+  {% include '_layouts/_seo.twig' %}
 </head>
 <body class="font-sans antialiased overflow-x-hidden bg-gray-100">
   {% block body %}{% endblock %}
