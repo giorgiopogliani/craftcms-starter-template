@@ -30,6 +30,12 @@ php craft setup/security-key
 mysql -uroot -p -e "create database example"
 ```
 
+or you can also use composer
+
+```
+composer create-project giorgiopogliani/craftcms-starter-template --stability=dev website
+```
+
 Edit your `.env` to match your configuration.
 
 ```
