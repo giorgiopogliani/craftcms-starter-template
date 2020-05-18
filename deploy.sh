@@ -45,7 +45,7 @@ function push(){
       user $USER '$PASS'
       lcd $LCD
       set ftp:ssl-allow no
-      mirror $EXCLUDE --only-newer --reverse --delete --continue --parallel=2 $LCD/$PUSH $RCD/$PUSH
+      mirror ${EXCLUDE//[$'\t\r\n\\']} --only-newer --reverse --delete --continue --parallel=2 $LCD/$PUSH $RCD/$PUSH
     "
   fi
 }
@@ -59,7 +59,7 @@ function pull(){
       user $USER '$PASS'
       lcd $LCD
       set ftp:ssl-allow no
-      mirror $EXCLUDE --only-newer --delete --continue --parallel=2 $RCD/$PULL $LCD/$PULL
+      mirror ${EXCLUDE//[$'\t\r\n\\']} --only-newer --delete --continue --parallel=2 $RCD/$PULL $LCD/$PULL
     "
   fi
 }
