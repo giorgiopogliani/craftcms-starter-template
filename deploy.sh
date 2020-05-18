@@ -87,14 +87,19 @@ while (( "$#" )); do
       SSH=true
       shift 1
       ;;
+    --upload-vendor)
+      VENDOR=true
+      shift 1
+      ;;
     -h|--help)
       echo "
-Mini Craft Scripts 0.1
+Mini Craft Scripts 0.2
 
   -u|--push  [path]   Upload stuff to server.
   -p|--pull  [path]   Download stuff from server.
   -w|--watch [path]   Watch for local filesystem changes.
   -s|--ssh            Sync stuff with ssh configuration, default is ftp.
+  --upload-vendor     This command quickly upload the vendor folder using zip (SSH only).
   -b|--build          Run yarn dev before deploy.
   -h|--help           This help.
 
@@ -119,6 +124,19 @@ bash deploy.sh --build
       ;;
   esac
 done
+
+if [[ -n "$VENDOR" ]]; then
+  if [[ -n "$SSH" ]]; then
+    zip -r vendor.zip vendor
+    bash deploy.sh -u vendor.zip
+    $SSHCONFIG $USER@$HOST "cd $RCD && unzip vendor.zip";
+    rm vendor.zip
+    exit 0
+  else
+    echo "Upload vendor only works with SSH."
+    exit 1
+  fi
+fi
 
 if [[ -n "$BUILD" ]]; then
   yarn dev
