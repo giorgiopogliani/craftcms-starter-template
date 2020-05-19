@@ -93,7 +93,7 @@ while (( "$#" )); do
       ;;
     -h|--help)
       echo "
-Mini Craft Scripts 0.2
+Mini Craft Scripts 0.2.1
 
   -u|--push  [path]   Upload stuff to server.
   -p|--pull  [path]   Download stuff from server.
@@ -128,7 +128,7 @@ done
 if [[ -n "$VENDOR" ]]; then
   if [[ -n "$SSH" ]]; then
     zip -r vendor.zip vendor
-    bash deploy.sh -u vendor.zip
+    bash deploy.sh --ssh -u vendor.zip
     $SSHCONFIG $USER@$HOST "cd $RCD && unzip vendor.zip";
     rm vendor.zip
     exit 0
