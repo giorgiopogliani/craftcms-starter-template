@@ -13,7 +13,7 @@ EXCLUDE="
 --exclude vendor \
 --exclude storage \
 --exclude node_modules \
---exclude express-form/_notifications \
+--exclude express-forms/_notifications \
 --exclude deploy.sh \
 --exclude .idea \
 --exclude .git \
@@ -93,13 +93,13 @@ while (( "$#" )); do
       ;;
     -h|--help)
       echo "
-Mini Craft Scripts 0.2.1
+Mini Craft Scripts 0.2.2
 
   -u|--push  [path]   Upload stuff to server.
   -p|--pull  [path]   Download stuff from server.
   -w|--watch [path]   Watch for local filesystem changes.
   -s|--ssh            Sync stuff with ssh configuration, default is ftp.
-  --upload-vendor     This command quickly upload the vendor folder using zip (SSH only).
+  --upload-vendor     This command quickly upload the vendor folder using zip.
   -b|--build          Run yarn dev before deploy.
   -h|--help           This help.
 
@@ -133,8 +133,17 @@ if [[ -n "$VENDOR" ]]; then
     rm vendor.zip
     exit 0
   else
-    echo "Upload vendor only works with SSH."
-    exit 1
+    zip -r vendor.zip vendor
+    lftp -f "
+      open $HOST
+      user $USER '$PASS'
+      lcd $LCD
+      set ftp:ssl-allow no
+      mput $LCD/vendor.zip $RCD/vendor.zip
+    "
+    rm vendor.zip
+    echo "Use your hosting provider panel to unzip the vendor folder."
+    exit 0
   fi
 fi
 
