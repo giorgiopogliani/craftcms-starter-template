@@ -1,0 +1,12 @@
+<label class="flex mb-4 cursor-pointer">
+
+	<input name="{{ field.handle }}" type="checkbox" class="form-checkbox mr-2" {{ field.isRequired ? 'required' : '' }}>
+
+	{% if field.hasErrors %}
+		{% for error in field.errors %}
+			<span class="text-red-600">
+				{{ error }}
+			</span>
+		{% endfor %}
+	{% endif %}
+</label>

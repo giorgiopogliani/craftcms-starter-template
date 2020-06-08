@@ -1,12 +1,11 @@
 {% macro menu(slug) %}
   {% set menuEntry = craft.entries.section('menu').slug(slug).one() %}
   {% set menu = craft.entries.section('menu').descendantOf(menuEntry.id).all() %}
-  <ul class="flex">
+  <ul class="list-reset lg:flex items-center space-x-0 space-y-4 lg:space-y-0 lg:space-x-4 text-base tracking-wide">
     {% for item in menu %}
       <li class="uppercase px-3">
         {% if not item.callToAction.isEmpty() %}
-          <a class="hover:underline" {{ item.callToAction.getLinkAttributes() }}
-             data-target="{{ item.callToAction.getUrl() }}">
+          <a class="hover:underline" {{ item.callToAction.getLinkAttributes() }}>
             {{ item.callToAction.getText() }}
           </a>
         {% endif %}

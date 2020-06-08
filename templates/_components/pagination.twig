@@ -1,0 +1,32 @@
+{% macro make(pageInfo) %}
+  <nav class="p-10 text-sm" role="navigation">
+    {% if pageInfo.prevUrl %}
+      <a href="{{ pageInfo.prevUrl }}" class="border-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-4 w-4" viewBox="0 0 13 13">
+          <path
+            d="M3.11114 6.96401L8.95718 12.8081C9.2137 13.064 9.62931 13.064 9.88648 12.8081C10.143 12.5522 10.143 12.1366 9.88648 11.8808L5.21159 7.20755C4.82091 6.81701 4.82089 6.18368 5.21154 5.79312L9.88583 1.11996C10.1423 0.86409 10.1423 0.448486 9.88583 0.191965C9.62931 -0.0639071 9.21306 -0.0639071 8.95654 0.191965L3.1105 6.03601C2.85792 6.28924 2.85792 6.71137 3.11114 6.96401Z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    {% for page, url in pageInfo.getPrevUrls(5) %}
+      <a class="" href="{{ url }}">{{ page }}</a>
+    {% endfor %}
+
+    <a href="#" class="current">{{ pageInfo.currentPage }}</a>
+
+    {% for page, url in pageInfo.getNextUrls(5) %}
+      <a class="" href="{{ url }}">{{ page }}</a>
+    {% endfor %}
+
+    {% if pageInfo.nextUrl %}
+      <a href="{{ pageInfo.nextUrl }}" class="border-none">
+        <svg xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg)"
+             class="fill-current h-4 w-4" viewBox="0 0 13 13">
+          <path
+            d="M3.11114 6.96401L8.95718 12.8081C9.2137 13.064 9.62931 13.064 9.88648 12.8081C10.143 12.5522 10.143 12.1366 9.88648 11.8808L5.21159 7.20755C4.82091 6.81701 4.82089 6.18368 5.21154 5.79312L9.88583 1.11996C10.1423 0.86409 10.1423 0.448486 9.88583 0.191965C9.62931 -0.0639071 9.21306 -0.0639071 8.95654 0.191965L3.1105 6.03601C2.85792 6.28924 2.85792 6.71137 3.11114 6.96401Z"/>
+        </svg>
+      </a>
+    {% endif %}
+  </nav>
+{% endmacro %}

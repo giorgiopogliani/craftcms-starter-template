@@ -12,23 +12,8 @@
 {% endmacro %}
 {% import _self as forms %}
 
-{# Flash Success #}
-{% if form.submittedSuccessfully %}
-	<div class="bg-white py-4 px-6 font-bold mb-6" role="alert">
-		{{ "Form has been submitted successfully!"|t }}
-	</div>
-  <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      window.dataLayer = window.dataLayer || []; 
-      window.dataLayer.push({ 
-        event: 'formSubmissionSuccess', 
-        formId: '{{handle}}'
-      });
-    });
-  </script>
-{% endif %}
-
-{% if form.submitted %}
+{# Scroll back to the form #}
+{% if form.submitted or form.submittedSuccessfully %}
   <script>
     window.addEventListener('DOMContentLoaded', event => {
       document.getElementById("form-{{handle}}").scrollIntoView();
@@ -37,8 +22,23 @@
 {% endif %}
 
 <div id="form-{{handle}}">
-	{# General Error Handling #}
+  {# Flash Success #}
+  {% if form.submittedSuccessfully %}
+    <div class="py-4 font-bold mb-6" role="alert">
+      {{ "Form has been submitted successfully!"|t }}
+    </div>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        window.dataLayer = window.dataLayer || []; 
+        window.dataLayer.push({ 
+          event: 'formSubmissionSuccess', 
+          formId: '{{handle}}'
+        });
+      });
+    </script>
+  {% endif %}
   
+	{# General Error Handling #}
 	{% if not form.valid %}
 		<div class="bg-red-100 py-4 px-6 font-bold mb-6" role="alert">
 			{{ "Error! Please review the form and try submitting again."|t }}
@@ -83,7 +83,7 @@
     {% endif %}
   {% endfor %}
 
-  <button type="submit" class="button button-normal">Submit</button>
+  <button type="submit" class="button button-normal">{{"Submit"|t}}</button>
 
   {{ form.closeTag }}
 </div>

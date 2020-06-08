@@ -1,0 +1,12 @@
+<label class="block mb-4">
+	
+  <input name="{{ field.handle }}" type="{{ field.type }}" placeholder="{{ label ?? field.label }}..." class="form-input mt-1 block w-full border placeholder-gray-500 border-black p-2 {% if field.hasErrors %} border-red-600{% endif %}" {{ field.isRequired ? 'required' : '' }} value="{{ field.value }}">
+	
+  {% if field.hasErrors %}
+		{% for error in field.errors %}
+			<span class="text-red-600">
+				{{ error }}
+			</span>
+		{% endfor %}
+	{% endif %}
+</label>
