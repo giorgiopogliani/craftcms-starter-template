@@ -21,7 +21,7 @@ EXCLUDE="
 --exclude .DS_Store \
 "
 
-watch() {
+function watch() {
   echo watching folder "$1"
   while true
   do
@@ -31,6 +31,11 @@ watch() {
       else
           echo changed, "$files"
           push
+          if command -v terminal-notifier &> /dev/null; then 
+              terminal-notifier -message $files
+          else 
+              echo "Install terminal-notifier to be notified of files upload!";  
+          fi
           sleep 2
       fi
   done
