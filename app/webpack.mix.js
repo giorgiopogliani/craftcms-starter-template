@@ -1,5 +1,4 @@
 let mix = require('laravel-mix');
-require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -31,14 +30,5 @@ if (process.env.NODE_ENV == "development") {
             "assets/**/*.js",
             "templates/**/*.twig"
         ]
-    });
-}
-
-if (process.env.NODE_ENV == "production") {
-    mix.purgeCss({
-        globs: [
-            path.join(__dirname, 'templates/**/*.twig'),
-        ],
-        extensions: ['html', 'js', 'jsx', 'ts', 'tsx', 'php', 'vue', 'twig'],
     });
 }

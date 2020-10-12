@@ -5,7 +5,6 @@ namespace modules\extensions;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Craft;
 
 class MixManifestExtension extends AbstractExtension
 {

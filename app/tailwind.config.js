@@ -1,4 +1,8 @@
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true, 
+    purgeLayersByDefault: true, 
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -8,8 +12,8 @@ module.exports = {
   },
   variants: {},
   plugins: [
-    requrie('@tailwindcss/ui'),
-    requrie('@tailwindcss/typography'),
-    requrie('@tailwindcss/custom-forms'),
+    require('@tailwindcss/ui'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/custom-forms'),
   ],
 };

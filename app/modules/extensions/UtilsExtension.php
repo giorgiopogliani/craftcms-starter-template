@@ -6,17 +6,12 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Craft;
 
-class MixManifestExtension extends AbstractExtension
+class UtilsExtension extends AbstractExtension
 {
   public function getFunctions()
   {
     return [
-      new TwigFunction('is_homepage', [$this, 'is_homepage'])
+      new TwigFunction('is_homepage', fn () => Craft::$app->getRequest()->getFullPath() == "")
     ];
-  }
-
-  public function is_homepage()
-  {
-    return Craft::$app->getRequest()->getFullPath() == "";
   }
 }
