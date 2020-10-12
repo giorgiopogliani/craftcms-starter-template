@@ -10,8 +10,8 @@
   ],
   "require": {
     "ext-json": "*",
-    "craftcms/cms": "^3.4",
-    "craftcms/redactor": "^2.6",
+    "craftcms/cms": "^3.5",
+    "craftcms/redactor": "^2.8",
     "ether/seo": "^3.6",
     "marionnewlevant/picture": "^2.2",
     "sebastianlenz/linkfield": "^1.0",

@@ -18,5 +18,10 @@
     "laravel-mix-purgecss": "^4.1.0",
     "postcss-import": "^12.0.1",
     "tailwindcss": "^1.2.0"
+  },
+  "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/ui": "^0.6.2"
   }
 }

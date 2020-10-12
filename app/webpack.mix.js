@@ -13,9 +13,9 @@ require('laravel-mix-purgecss');
  */
 
 mix
-    .setPublicPath('./web')
-    .react('assets/js/app.js', 'web/js')
-    .postCss('assets/css/app.css', 'web/css', [
+    .setPublicPath('../')
+    .react('assets/js/app.js', '../js')
+    .postCss('assets/css/app.css', '../css', [
         require('postcss-import'),
         require('tailwindcss'),
         require('postcss-nested'),

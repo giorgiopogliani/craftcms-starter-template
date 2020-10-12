@@ -8,12 +8,12 @@ RCD="/public_html/"   # FTP server directory
 SSHCONFIG=""          # ssh -i '~/.ssh/idrsa'
 
 EXCLUDE=" 
---exclude web/images \
---exclude web/cpresources \
---exclude vendor \
---exclude storage \
---exclude node_modules \
---exclude express-forms/_notifications \
+--exclude images \
+--exclude cpresources \
+--exclude app/vendor \
+--exclude app/node_modules \
+--exclude app/storage \
+--exclude app/templates/express-forms/_notifications \
 --exclude deploy.sh \
 --exclude .idea \
 --exclude .git \
@@ -110,7 +110,7 @@ Mini Craft Scripts 0.2.2
 
 Example:
 bash deploy.sh --ssh --watch templates
-bash deploy.sh --pull web/images
+bash deploy.sh --pull /images
 bash deploy.sh --build 
       "
       exit 0
@@ -132,13 +132,13 @@ done
 
 if [[ -n "$VENDOR" ]]; then
   if [[ -n "$SSH" ]]; then
-    zip -r vendor.zip vendor
+    zip -r vendor.zip app/vendor
     bash deploy.sh --ssh -u vendor.zip
     $SSHCONFIG $USER@$HOST "cd $RCD && unzip vendor.zip";
     rm vendor.zip
     exit 0
   else
-    zip -r vendor.zip vendor
+    zip -r vendor.zip app/vendor
     lftp -f "
       open $HOST
       user $USER '$PASS'

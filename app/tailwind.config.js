@@ -7,5 +7,9 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    requrie('@tailwindcss/ui'),
+    requrie('@tailwindcss/typography'),
+    requrie('@tailwindcss/custom-forms'),
+  ],
 };

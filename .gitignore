@@ -1,10 +1,51 @@
-/.env
-/.idea
-/vendor
+# CRAFT ENVIRONMENT
+.env.php
+.env.sh
+.env
+/app/.env.php
+/app/.env.sh
+/app/.env
+
+# CRAFT STORAGE
+/app/storage/*
 /storage/*
-/node_modules
+
+# ASSETS
+/assets/*
+/images
+/assets/*
+/css/*
+/js/*
+/scripts/backups
+/backups
+
+# IMAGER TRANSFORMS
+/public/imager/*
+/web/imager/*
+/imager/*
+
+# BUILD FILES
+/app/node_modules
+/app/vendor
+/app/yarn-error.log
+/app/yarn.lock
+/app/package-lock.json
+
+# MISC FILES
+.cache
 .DS_Store
-/public/css
-/public/js
-deploy.sh
-!.gitkeep
+.idea
+.project
+.settings
+*.esproj
+*.sublime-workspace
+*.sublime-project
+*.tmproj
+*.tmproject
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+config.codekit3
+prepros-6.config

@@ -5,6 +5,7 @@ namespace modules\extensions;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Craft;
 
 class MixManifestExtension extends AbstractExtension
 {
@@ -19,7 +20,7 @@ class MixManifestExtension extends AbstractExtension
     {
         $mix = $this->getPublicFile('mix-manifest.json');
 
-        if (is_null($mix)){
+        if (is_null($mix)) {
             return null;
         }
 
@@ -32,16 +33,16 @@ class MixManifestExtension extends AbstractExtension
 
     protected function getPublicFile($filename)
     {
-        $path = realpath(
-            __DIR__ . DIRECTORY_SEPARATOR
-                . '..' . DIRECTORY_SEPARATOR
-                . '..' . DIRECTORY_SEPARATOR
-                . 'web'
-            ) . DIRECTORY_SEPARATOR . $filename;
+        $path =
+            CRAFT_BASE_PATH .
+            DIRECTORY_SEPARATOR .
+            '..' .
+            DIRECTORY_SEPARATOR .
+            $filename;
 
         try {
             return json_decode(file_get_contents($path), true);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             \Craft::error('mix-manifest.json is missing');
         }
 
