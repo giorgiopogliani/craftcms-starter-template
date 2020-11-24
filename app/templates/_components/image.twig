@@ -1,0 +1,26 @@
+{% set breakpoints = {
+    'sm': '@media (min-width: 640px)',
+    'md': '@media (min-width: 768px)',
+    'lg': '@media (min-width: 1024px)',
+    'xl': '@media (min-width: 1280px)',
+    '2xl': '@media (min-width: 1536px)',
+} %}
+
+<picture>
+  {{ tag('source', {
+    type: "image/webp",
+    srcset: ['1', '1.5', '2', '3', '4', '5']|map(set => "#{asset.getUrl({ width: 300*set, height: 300*set, format: 'webp'})} #{set}x")|join(', '),
+    sizes: sizes|map((value, key) => "#{breakpoints[key]} #{value}")|join(','),
+  }) }}
+
+  {% do asset.setTransform({ width: 300, height: 300, format: 'jpg' }) %}
+
+  {{ tag('img', {
+      src: asset.url,
+      width: asset.width,
+      height: asset.height,
+      srcset: asset.getSrcset(['1.5x', '2x', '3x', '4x', '5x']),
+      sizes: sizes|map((value, key) => "#{breakpoints[key]} #{value}")|join(','),
+      alt: asset.title,
+  }) }}
+</picture>
