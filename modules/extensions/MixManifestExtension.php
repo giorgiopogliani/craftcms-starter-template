@@ -35,7 +35,7 @@ class MixManifestExtension extends AbstractExtension
         $path =
             CRAFT_BASE_PATH .
             DIRECTORY_SEPARATOR .
-            '..' .
+            'web' .
             DIRECTORY_SEPARATOR .
             $filename;
 
