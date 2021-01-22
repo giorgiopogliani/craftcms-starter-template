@@ -1,0 +1,27 @@
+{% extends "_layouts/cp" %}
+{% set title = 'Settings' %}
+{% set selectedSubnavItem = 'settings' %}
+
+{% block content %}
+	<input type="hidden" name="action" value="plugins/save-plugin-settings">
+	<input type="hidden" name="pluginHandle" value="seo">
+	{{ redirectInput("seo/settings") }}
+
+	{% namespace namespace %}
+	<div id="fieldtype">
+		{% include "seo/_settings/fieldtype" %}
+	</div>
+
+	<div id="robots" class="hidden">
+		{% include "seo/_settings/robots" %}
+	</div>
+
+	<div id="sitemap" class="hidden">
+		{% include "seo/_settings/sitemap" %}
+	</div>
+
+	<div id="social" class="hidden">
+		{% include "seo/_settings/social" %}
+	</div>
+	{% endnamespace %}
+{% endblock %}

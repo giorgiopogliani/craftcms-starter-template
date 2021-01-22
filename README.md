@@ -15,10 +15,6 @@ When developing your theme you can use `yarn watch` and browsersync is already c
 DEFAULT_SITE_URL="http://url-to-my-site.test"
 ```
 
-When building for production purgecss will be used. I included the common extensions to the configuration of purgecss, the
-files that will be analyzed for classes to keep. You can edit the configuration as you like in the `webpack.mix.js`. 
-You can find more information on the official website: https://laravel-mix.com/
-
 # Start
 
 ```
@@ -40,11 +36,11 @@ Edit your `.env` to match your configuration.
 
 ```
 php craft install/craft 
-yarn install
-yarn watch
+npm install
+npm run watch
 ```
 
 # Deploy
 
-There is a really simple deploy script in the root of the repo. You will need `lftp` if you use ftp to deploy your website or `rsync`if you use SSH. Add your credentials at the top of the file. There are a few command line options like `--watch=<folder to watch>` or `--build` to build css and js before deploy. 
+I have created a simple utility to help me with deploys. You can check out it here:     
  

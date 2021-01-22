@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard Copy 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="300" cy="300" r="300"></circle>
+    </defs>
+    <g id="SEO-Field" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-8">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Oval" fill="#EFEFEF" xlink:href="#path-1"></use>
+            <circle id="Oval-2" fill="#48D983" mask="url(#mask-2)" cx="481.5" cy="374.5" r="206.5"></circle>
+            <circle id="Oval-2-Copy" fill="#48D983" mask="url(#mask-2)" cx="94" cy="128" r="94"></circle>
+            <circle id="Oval-2-Copy-4" fill="#48D983" mask="url(#mask-2)" cx="188.5" cy="300.5" r="59.5"></circle>
+            <circle id="Oval-2-Copy-5" fill="#FB4754" mask="url(#mask-2)" cx="69" cy="375" r="34"></circle>
+            <circle id="Oval-2-Copy-2" fill="#FCAA50" mask="url(#mask-2)" cx="301.5" cy="6.5" r="160.5"></circle>
+            <circle id="Oval-2-Copy-3" fill="#FB4754" mask="url(#mask-2)" cx="192" cy="679" r="253"></circle>
+        </g>
+    </g>
+</svg>

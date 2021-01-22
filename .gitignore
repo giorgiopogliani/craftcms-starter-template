@@ -2,22 +2,13 @@
 .env.php
 .env.sh
 .env
-/app/.env.php
-/app/.env.sh
-/app/.env
 
 # CRAFT STORAGE
-/app/storage/*
 /storage/*
 
 # ASSETS
-/assets/*
-/images
-/assets/*
-/css/*
-/js/*
-/scripts/backups
-/backups
+/web/dist/*
+/web/uploads/*
 
 # IMAGER TRANSFORMS
 /public/imager/*
@@ -28,8 +19,6 @@
 /app/node_modules
 /app/vendor
 /app/yarn-error.log
-/app/yarn.lock
-/app/package-lock.json
 
 # MISC FILES
 .cache
@@ -49,3 +38,4 @@
 !.vscode/extensions.json
 config.codekit3
 prepros-6.config
+!.gitkeep

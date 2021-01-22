@@ -1,0 +1,54 @@
+{% if name ?? false %}
+    {{ hiddenInput(name, '') }}
+{% endif -%}
+
+{% set elements = elements ?? [] -%}
+{% set jsClass = jsClass ?? 'Craft.BaseElementSelectInput' -%}
+{% set sources = sources ?? null -%}
+{% set criteria = criteria ?? null -%}
+{% set sourceElementId = sourceElementId ?? null -%}
+{% set storageKey = storageKey ?? null -%}
+{% set viewMode = viewMode ?? 'list' %}
+{% set sortable = sortable ?? true %}
+{% set prevalidate = prevalidate ?? false %}
+{% set fieldId = fieldId ?? null %}
+{% set limit = limit ?? null %}
+
+<div id="{{ id }}" class="elementselect"
+        {%- if block('attr') is defined %} {{ block('attr') }}{% endif %}>
+    <div class="elements">
+        {% for element in elements %}
+            {% include "_elements/element" with {
+                context: 'field',
+                size: (viewMode == 'large' ? 'large' : 'small')
+            } %}
+        {% endfor %}
+    </div>
+
+    <div class="flex{% if limit and elements|length >= limit %} hidden{% endif %}">
+        <button type="button" class="btn add icon dashed">{{ selectionLabel ?? "Choose"|t('app') }}</button>
+    </div>
+</div>
+
+{% set jsSettings = {
+    id: id|namespaceInputId,
+    name: name|namespaceInputName,
+    elementType: elementType,
+    sources: sources,
+    criteria: criteria,
+    allowSelfRelations: allowSelfRelations ?? false,
+    sourceElementId: sourceElementId,
+    disabledElementIds: disabledElementIds ?? null,
+    viewMode: viewMode,
+    limit: limit,
+    showSiteMenu: showSiteMenu ?? false,
+    modalStorageKey: storageKey,
+    fieldId: fieldId,
+    sortable: sortable,
+    prevalidate: prevalidate,
+    modalSettings: modalSettings ?? {},
+} %}
+
+{% js %}
+    new {{ jsClass }}({{ jsSettings|json_encode|raw }});
+{% endjs %}

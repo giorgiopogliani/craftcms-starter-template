@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	processIsolation="false"
+	stopOnFailure="false"
+	bootstrap="vendor/autoload.php">
+
+	<testsuites>
+		<testsuite name="Project Test Suite">
+			<directory>tests</directory>
+			<exclude>tests/JsClosureCompilerTest.php</exclude>
+		</testsuite>
+	</testsuites>
+
+	<!--
+	<php>
+		<server name="KERNEL_DIR" value="/path/to/your/app/" />
+	</php>
+	-->
+
+	<!-- for code coverage -->
+	<filter>
+		<whitelist>
+			<directory>.</directory>
+			<exclude>
+				<directory>tests</directory>
+				<directory>vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+</phpunit>

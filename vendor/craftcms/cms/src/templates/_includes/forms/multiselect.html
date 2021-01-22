@@ -1,0 +1,34 @@
+{%- set class = (class ?? [])|explodeClass|push('multiselect') %}
+{%- set options = options ?? [] %}
+{%- set values = values ?? [] -%}
+{%- set hasOptgroups = false -%}
+
+{% if name ?? false %}
+    {{ hiddenInput(name, '') }}
+{% endif -%}
+
+<div class="{{ class|join(' ') }}"
+        {%- if block('attr') is defined %} {{ block('attr') }}{% endif %}>
+    <select multiple
+            {%- if id is defined %} id="{{ id }}"{% endif %}
+            {%- if name ?? false %} name="{{ name }}[]"{% endif %}
+            {%- if (autofocus ?? false) and not craft.app.request.isMobileBrowser(true) %} autofocus{% endif %}
+            {%- if disabled ?? false %} disabled{% endif %}
+            {%- if size is defined %} size="{{ size }}"{% endif %}>
+        {%- for key, option in options %}
+            {% if option.optgroup is defined %}
+                {% if hasOptgroups %}
+                    </optgroup>
+                {% else %}
+                    {% set hasOptgroups = true %}
+                {% endif %}
+                <optgroup label="{{ option.optgroup }}">
+            {% else %}
+                {% set optionLabel = (option.label is defined ? option.label : option) %}
+                {% set optionValue = (option.value is defined ? option.value : key) %}
+                {% set optionDisabled = (option.disabled is defined ? option.disabled : false) %}
+                <option value="{{ optionValue }}"{% if optionValue in values %} selected{% endif %}{% if optionDisabled %} disabled{% endif %}>{{ optionLabel }}</option>
+            {% endif %}
+        {%- endfor %}
+    </select>
+</div>

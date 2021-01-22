@@ -1,0 +1,36 @@
+{% extends "_layouts/cp" %}
+{% set title = 'SEO' %}
+{% set selectedSubnavItem = 'dashboard' %}
+
+{% block content %}
+	<ul class="icons">
+		{% if currentUser.admin or currentUser.can('manageSitemap') %}
+			<li>
+				<a href="{{ url('seo/sitemap') }}" data-icon="globe">
+					Sitemap
+				</a>
+			</li>
+		{% endif %}
+		{% if currentUser.admin or currentUser.can('manageRedirects') %}
+			<li>
+				<a href="{{ url('seo/redirects') }}" data-icon="routes">
+					Redirects
+				</a>
+			</li>
+		{% endif %}
+		{#<li>
+			<a href="{{ url('seo/schema') }}" data-icon="tags">
+				Schema
+			</a>
+		</li>#}
+		{% if craft.app.config.general.allowAdminChanges and currentUser.admin %}
+			<li>
+				<a href="{{ url('seo/settings') }}"
+				   data-icon="settings"
+				>
+					Settings
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+{% endblock %}

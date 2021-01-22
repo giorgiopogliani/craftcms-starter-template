@@ -1,0 +1,28 @@
+{
+  "name": "sebastianlenz/linkfield",
+  "description": "A Craft field type for selecting links",
+  "type": "craft-plugin",
+  "license": "MIT",
+  "require": {
+    "php": "^7.0",
+    "craftcms/cms": "^3.0.0-RC1"
+  },
+  "autoload": {
+    "psr-4": {
+      "typedlinkfield\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "typedlinkfield",
+    "name": "Typed link field",
+    "developer": "Sebastian Lenz",
+    "developerUrl": "https://github.com/sebastian-lenz/"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit ./tests",
+    "testWithCoverage": "./vendor/bin/phpunit --coverage-html ./tests/coverage --whitelist ./src  ./tests"
+  }
+}
