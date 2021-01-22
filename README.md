@@ -42,5 +42,5 @@ npm run watch
 
 # Deploy
 
-I have created a simple utility to help me with deploys. You can check out it here:     
+I have created a simple utility to help me with deploys. You can check out it here: [https://github.com/giorgiopogliani/nod](https://github.com/giorgiopogliani/nod)   
  
