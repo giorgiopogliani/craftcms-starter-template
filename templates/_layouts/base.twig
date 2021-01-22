@@ -4,14 +4,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ mix('/dist/css/app.css') }}">
   {% block head %}{% endblock %}
   {# {% include '_layouts/_seo.twig' %} #}
   {% include '_layouts/_favicon.twig' %}
 </head>
 <body class="font-sans antialiased overflow-x-hidden bg-gray-100">
   {% block body %}{% endblock %}
-  <script src="{{ mix('/js/app.js') }}"></script>
+  <script src="{{ mix('/dist/js/app.js') }}"></script>
   {% include '_layouts/_analytics.twig' %}
 </body>
 </html>
