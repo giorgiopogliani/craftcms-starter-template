@@ -15,11 +15,3 @@
     {{ link.getText() }}
   </a>
 {% endmacro %}
-
-{% macro image(image, config) %}
-  {% if image is iterable %}
-    {{ craft.picture.element(image, 'banner', config ?? {alt: image.title, class:'w-full h-full'})}}
-  {% else %}
-    <img alt="Image" class="object-cover object-center h-full w-full overflow-hidden" src="{{ image }}">
-  {% endif %}
-{% endmacro %}

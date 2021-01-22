@@ -39,7 +39,7 @@ class Module extends \yii\base\Module
         } else {
             Craft::$app->view->registerTwigExtension(new MixManifestExtension());
             Craft::$app->view->registerTwigExtension(new UtilsExtension());
-            Craft::$app->view->registerTwigExtension(new ComponentExtension());
+            Craft::$app->view->registerTwigExtension(new ComponentExtension('_components'));
             $this->controllerNamespace = 'modules\\controllers';
         }
 
