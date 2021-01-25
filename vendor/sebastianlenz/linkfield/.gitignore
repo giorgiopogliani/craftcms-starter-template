@@ -1,6 +1,0 @@
-/.idea
-/etc
-/tests/coverage
-/vendor
-.DS_Store
-composer.lock
