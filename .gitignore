@@ -16,9 +16,9 @@
 /imager/*
 
 # BUILD FILES
-/app/node_modules
-/app/vendor
-/app/yarn-error.log
+/node_modules
+/vendor
+/yarn-error.log
 
 # MISC FILES
 .cache
