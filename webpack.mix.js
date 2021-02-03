@@ -22,7 +22,7 @@ mix
   ])
   .version()
   .browserSync({
-    proxy: process.env.DEFAULT_SITE_URL,
+    proxy: process.env.PRIMARY_SITE_URL,
     files: [
       "templates/**/*.css",
       "templates/**/*.twig",
