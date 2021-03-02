@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Poppins', 'Helvetica', 'sans-serif']
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
