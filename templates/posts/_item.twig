@@ -1,0 +1,18 @@
+{% import "_macros/ui.twig" as ui %}
+
+<div class="rounded bg-white shadow w-full">
+
+  {% if item.gallery|length > 0 %}
+    {% if item.gallery[0] is not null %}
+      {{ ui.image(item.gallery[0], "w-full") }}
+    {% endif %}
+  {% endif %}
+
+  <div class="p-4">
+    <h3 class="text-2xl mb-4">{{ item.title }}</h3>
+    <a href="{{ item.url }}" class="hover:underline text-blue-600">
+      {{"Read more"|t}}
+    </a>
+  </div>
+</div>
+

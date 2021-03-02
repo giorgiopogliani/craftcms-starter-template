@@ -4,7 +4,7 @@ namespace modules;
 use Craft;
 use modules\extensions\MixManifestExtension;
 use modules\extensions\UtilsExtension;
-use Performing\TwigComponents\ComponentExtension;
+// use Performing\TwigComponents\ComponentExtension;
 
 /**
  * Custom module class.
@@ -39,7 +39,7 @@ class Module extends \yii\base\Module
         } else {
             Craft::$app->view->registerTwigExtension(new MixManifestExtension());
             Craft::$app->view->registerTwigExtension(new UtilsExtension());
-            Craft::$app->view->registerTwigExtension(new ComponentExtension('_components'));
+            // Craft::$app->view->registerTwigExtension(new ComponentExtension('_components'));
             $this->controllerNamespace = 'modules\\controllers';
         }
 

@@ -9,6 +9,8 @@
 # ASSETS
 /web/dist/*
 /web/uploads/*
+/web/cpresources
+config/license.key
 
 # IMAGER TRANSFORMS
 /public/imager/*

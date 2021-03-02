@@ -44,5 +44,8 @@ return [
     'production' => [
         // Set this to `false` to prevent administrative changes from being made on production
         'allowAdminChanges' => true,
+        'allowUpdates' => false,
+        // See https://craftcms.com/docs/3.x/config/config-settings.html#runqueueautomatically
+        // 'runQueueAutomatically' => false 
     ],
 ];

@@ -1,19 +1,20 @@
 .button {
-  @apply rounded-sm 
-        shadow
-        h-10
-        px-6
-        leading-9
-        font-semibold
-        transition
-        duration-100
-        ease-in
-        inline-block
-        bg-teal-400
-        ;
-
-  &:hover  {
-    @apply shadow-lg bg-teal-300;
-    transform: translateY(-1px);
-  }
+  @apply
+    w-full
+    inline-flex
+    items-center
+    justify-center
+    rounded
+    border
+    border-transparent
+    shadow-sm
+    px-4
+    h-8
+    text-base
+    font-medium
+    focus:outline-none
+    focus:ring-2
+    focus:ring-offset-2
+    sm:w-auto 
+    sm:text-sm;
 }

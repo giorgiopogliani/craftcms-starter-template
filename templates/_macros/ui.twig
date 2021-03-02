@@ -1,21 +1,40 @@
-{% macro title(text) %}
-  <div>
-    <h2 class="font-bold text-2xl leading-6">{{ text }}</h2>
-  </div>
+{# Different variant of titles #}
+{% macro title(text, variant) %}
+  {% if (variant ?? false) == 'page' %}
+    <h1 class="text-4xl text-teal-600 font-semibold">
+      {{ text }}
+    </h1>
+  {% else %}
+    <h2 class="text-3xl font-semibold">
+      {{ text }}
+    </h2>
+  {% endif %}
 {% endmacro %}
 
-{% macro button(text) %}
-  <button class="button">
+{% macro button(text, class = 'text-white bg-teal-500 hover:bg-teal-600 focus:ring-teal-500') %}
+  <button class="button {{ class }}">
     {{ text }}
   </button>
 {% endmacro %}
 
-{% macro cta(link, class = '') %}
+{% macro buttonlink(text, href, class = 'text-white bg-teal-500 hover:bg-teal-600 focus:ring-teal-500') %}
+  <a class="button {{ class }}" href="{{ href }}">
+    {{ text }}
+  </a>
+{% endmacro %}
+
+{# Link as from Linkfield Plugin #}
+{% macro link(link, class = 'text-white bg-teal-500 hover:bg-teal-600 focus:ring-teal-500') %}
   <a {{ link.getLinkAttributes() }} class="button {{ class }}">
     {{ link.getText() }}
   </a>
 {% endmacro %}
 
+{# Common asset #}
 {% macro image(asset, class = '') %}
-
+  {% if asset is iterable %}
+    <img src="{{asset.url}}" alt="{{ asset.title }}" class="{{ class }}" />
+  {% else %}
+    <img src="{{asset}}" alt="Image" class="{{ class }}" />
+  {% endif %}
 {% endmacro %}

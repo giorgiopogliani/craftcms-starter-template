@@ -6,8 +6,14 @@
 			<div class="flex w-full items-center justify-between">
 				<h1 class="">
 					<a href="/" class="flex justify-center items-center px-4">
-						{# {{ ui.image(user.logo.one(), {alt: currentSite.name, class: "h-12" }) }} #}
-            Starter
+						<svg class="h-8" style="transform: scaleX(-1)"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 301.604 301.604">
+              <circle cx="40.802" cy="40.802" r="40.802"/>
+              <circle cx="150.802" cy="40.802" r="40.802"/>
+              <circle cx="260.802" cy="40.802" r="40.802"/>
+              <circle cx="150.802" cy="150.802" r="40.802"/>
+              <circle cx="260.802" cy="150.802" r="40.802"/>
+              <circle cx="260.802" cy="260.802" r="40.802"/>
+            </svg>
 					</a>
 				</h1>
 				<div class="block lg:hidden">
@@ -20,7 +26,7 @@
 					</button>
 				</div>
 			</div>
-			<div x-bind:class="{ 'block': open, 'hidden': !open  }" class="nav lg:flex px-4 justify-end w-full mt-8 lg:mt-0">
+			<ul x-bind:class="{ 'block': open, 'hidden': !open  }" class="lg:flex px-4 justify-end w-full mt-8 lg:mt-0">
         <li class="px-4 py-1 text-left">
           <a target="_blank" href="https://github.com/giorgiopogliani/craftcms-starter-template" class="hover:underline">
             Github

@@ -1,9 +1,9 @@
 {% extends "_layouts/base" %}
 
+{% import "_macros/ui.twig" as ui %}
+
 {% block body %}
-
-  <div class="text-center p-6">
-    <h1 class="text-2xl font-semibold text-blue-800">{{"Page not available."|t}}</h1>
+  <div class="text-center p-6 mt-12 space-y-6 flex flex-col items-center justify-center">
+    <div>{{ui.title("Page not available."|t, 'page')}}</div>
   </div>
-
 {% endblock %}

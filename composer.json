@@ -11,14 +11,15 @@
   "require": {
     "php": "^7.4|^8.0",
     "ext-json": "*",
-    "craftcms/cms": "^3.5",
-    "craftcms/redactor": "^2.8",
-    "ether/seo": "^3.6",
-    "sebastianlenz/linkfield": "^1.0",
-    "vlucas/phpdotenv": "^3.4.0",
-    "performing/twig-components": "^0.1.0"
+    "craftcms/cms": "3.6.7",
+    "craftcms/redactor": "2.8.5",
+    "ether/seo": "3.6.7",
+    "pennebaker/craft-architect": "2.4.1",
+    "sebastianlenz/linkfield": "1.0.25",
+    "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
+    "deployer/deployer": "^6.8",
     "yiisoft/yii2-shell": "^2.0.3"
   },
   "autoload": {

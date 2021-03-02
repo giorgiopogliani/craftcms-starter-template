@@ -1,0 +1,25 @@
+{% extends "_layouts/site" %}
+
+{% import '_macros/ui.twig' as ui %}
+{% import '_macros/pagination.twig' as pagination %}
+
+{% block main %}
+  {% set query = craft.entries.section('posts').with('gallery').limit(10) %}
+
+  {% paginate query as pageInfo, pageEntries %}
+
+  <div class="px-6">
+    <div class="container mx-auto py-16 space-y-16">
+      {# If you want to skip the title on the second page #}
+      {% if not pageInfo.prevUrl %}
+        {{ ui.title('All Posts', 'page') }}
+      {% endif %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {% for entry in pageEntries %}
+          {% include 'posts/_item.twig' with {item: entry} %}
+        {% endfor %}
+      </div>
+      {{ pagination.make(pageInfo) }}
+    </div>
+  </div>
+{% endblock %}

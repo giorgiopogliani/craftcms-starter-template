@@ -1,0 +1,8 @@
+{% extends "_layouts/site" %}
+
+{% import '_macros/ui.twig' as ui %}
+{% import '_macros/pagination.twig' as pagination %}
+
+{% block main %}
+  {{ ui.title(entry.title, 'page') }}
+{% endblock %}

@@ -1,11 +1,15 @@
 {% extends "_layouts/base" %}
 
+{% import "_macros/ui.twig" as ui %}
+
 {% block body %}
 
-  <div class="text-center p-6 h-screen flex flex-col items-center justify-center">
-    <h1 class="text-5xl font-semibold text-yellow-600">{{"404 Not Found"|t}}</h1>
-    <p class="text-xl">{{"Page Not Found"|t}}</p>
-    <a href="/" class="button mt-6">{{"Home Page"|t}}</a>
+  <div class="text-center p-6 h-screen space-y-6 flex flex-col items-center justify-center">
+    <div>
+      {{ ui.title("404 Not Found"|t, 'page') }}
+      <p class="text-xl">{{"Page Not Found"|t}}</p>
+    </div>
+    {{ ui.buttonlink('Home Page', '/') }}
   </div>
 
 {% endblock %}

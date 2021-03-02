@@ -16,15 +16,21 @@
 				<div class="mb-6">
 					{{ ui.title('Hello, World!') }}
 				</div>
-				<div class="">
+				<div class="space-x-0 space-y-2 md:space-y-0 md:space-x-2">
 					{{ ui.button('Build something!') }}
+					{{ ui.button('Amazing!', 'text-white bg-blue-500 hover:bg-blue-600 focus:ring-blue-500') }}
 				</div>
 			</div>
 		</div>
 	</div>
 
-	{% include '_blocks/text.twig' with { block: { flip: false } } %}
-
-	{% include '_blocks/text.twig' with { block:{ flip: true } } %}
+	{% include '_blocks/text.twig' with { 
+    block: { 
+      flip: false,
+      heading: 'Cum sociis natoque penatibus et magnis dis parturient.',
+      body: 'Ut enim ad minim veniam, quis nostrud exercitation. Curabitur blandit tempus ardua ridiculus sed magna. Quid securi etiam tamquam eu fugiat nulla pariatur.
+      Plura mihi bona sunt, inclinet, amari petere vellent. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Fictum, deserunt mollit anim laborum astutumque! Phasellus laoreet lorem vel dolor tempus vehicula. Tityre, tu patulae recubans sub tegmine fagi dolor. Curabitur est gravida et libero vitae dictum.'
+    } 
+  } %}
 
 {% endblock %}
