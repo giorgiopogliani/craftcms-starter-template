@@ -1,20 +1,36 @@
-# craftcms-starter-template
+# Craftcms Starter Template
+
+![photo_2021-03-02 11 52 51](https://user-images.githubusercontent.com/28866565/109638108-e59e7f00-7b4d-11eb-88f6-601c98bd101c.jpeg)
+
+## Components/Templates
+
+- Title
+- Button
+- Pagination
+- Image
+- Links
+- Posts with pagination
+- Header with responsive menu
+- Footer
+
+All the styles is done with `tailwindcss` framework and all the configuration is already done with the help of `laravel-mix`. 
+When developing your theme you can use `yarn watch` and browsersync is already configured. The `PRIMARY_SITE_URL` will be used as proxy for browsersync to connect to reach the website, but you can edit this behaviour in the `webpack.mix.js`.
+
+```
+PRIMARY_SITE_URL="http://url-to-my-site.test"
+```
+
+## Plugins
 
 This is a simple CraftCMS template with a few usefull plugins already installed: 
 ``` 
-"craftcms/redactor"
-"ether/seo"
-"sebastianlenz/linkfield"    
+"craftcms/redactor": "2.8.5",
+"ether/seo": "3.6.7",
+"pennebaker/craft-architect": "2.4.1",
+"sebastianlenz/linkfield": "1.0.25",
 ```
 
-All the styles is done with `tailwindcss` framework and all the configuration is already done with the help of `laravel-mix`. 
-When developing your theme you can use `yarn watch` and browsersync is already configured. The `DEFAULT_SITE_URL` will be used as proxy for browsersync to connect to reach the website, but you can edit this behaviour in the `webpack.mix.js`.
-
-```
-DEFAULT_SITE_URL="http://url-to-my-site.test"
-```
-
-# Start
+## Start
 
 ```
 git clone https://github.com/giorgiopogliani/craftcms-starter-template.git website
@@ -39,7 +55,6 @@ npm install
 npm run watch
 ```
 
-# Deploy
-
-I have created a simple utility to help me with deploys. You can check out it here: [https://github.com/giorgiopogliani/nod](https://github.com/giorgiopogliani/nod)   
+## Deploy
+You can use the deplpy.sh bash script. It's just a simple wrapper arouend rsync and lftp to push files throught ssh or ftp. Or you can check out my other simple utility, written in php and can be installed globaly, it's still a work in progress though: [https://github.com/giorgiopogliani/nod](https://github.com/giorgiopogliani/nod).
  
