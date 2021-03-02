@@ -58,7 +58,7 @@ npm run watch
 ## Deploy
 
 #### deplpy.sh
-You can use the deplpy.sh bash script. It's just a simple wrapper arouend rsync and lftp to push files throught ssh or ftp. 
+You can use the deplpy.sh bash script. It's just a simple wrapper arouend rsync and lftp to push files to a remote server. 
 
 #### Nod
 You can check out my other simple utility, written in php and can be installed globaly, it's still a work in progress though: [https://github.com/giorgiopogliani/nod](https://github.com/giorgiopogliani/nod).
