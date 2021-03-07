@@ -16,7 +16,7 @@
     "ether/seo": "3.6.7",
     "pennebaker/craft-architect": "2.4.1",
     "sebastianlenz/linkfield": "1.0.25",
-    "performing/twig-components": "0.1.1",
+    "performing/twig-components": "^0.2.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
