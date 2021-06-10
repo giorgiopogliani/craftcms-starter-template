@@ -16,11 +16,11 @@
     "ether/seo": "3.6.7",
     "pennebaker/craft-architect": "2.4.1",
     "sebastianlenz/linkfield": "1.0.25",
-    "performing/twig-components": "^0.2.0",
+    "performing/twig-components": "^0.3.0",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
-    "deployer/deployer": "^6.8",
+    "deployer/deployer": "^7.0",
     "yiisoft/yii2-shell": "^2.0.3"
   },
   "autoload": {
@@ -38,5 +38,7 @@
       "@composer dump-autoload -o",
       "@php craft setup/welcome"
     ]
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
