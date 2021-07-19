@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style> [x-cloak] { display: none } </style>
-  <link rel="stylesheet" type="text/css" href="{{ mix('/dist/css/app.css') }}">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  {{ craft.vite.script("/assets/app.js") }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   {% block head %}{% endblock %}
   {% include '_layouts/_seo.twig' %}
   {% include '_layouts/_favicon.twig' %}
 </head>
 <body class="font-sans antialiased overflow-x-hidden bg-gray-100">
   {% block body %}{% endblock %}
-  <script src="{{ mix('/dist/js/app.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+{% set as = attributes.get('as', attributes.get('type') ? 'button' : 'a') %}
+
+<{{ as }} {{ attributes.merge({ 'class': 'button' }) }}>
+  {{ slot }}
+</{{ as }}>

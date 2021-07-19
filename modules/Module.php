@@ -2,10 +2,10 @@
 namespace modules;
 
 use Craft;
-use modules\extensions\MixManifestExtension;
+use craft\services\Plugins;
+use yii\base\Event;
 use modules\extensions\UtilsExtension;
-// use Performing\TwigComponents\ComponentExtension;
-
+use Performing\TwigComponents\Setup;
 /**
  * Custom module class.
  *
@@ -37,14 +37,23 @@ class Module extends \yii\base\Module
         if (Craft::$app->getRequest()->getIsConsoleRequest()) {
             $this->controllerNamespace = 'modules\\console\\controllers';
         } else {
-            Craft::$app->view->registerTwigExtension(new MixManifestExtension());
             Craft::$app->view->registerTwigExtension(new UtilsExtension());
-            // Craft::$app->view->registerTwigExtension(new ComponentExtension('_components'));
             $this->controllerNamespace = 'modules\\controllers';
         }
 
         parent::init();
 
+        if (Craft::$app->request->getIsSiteRequest()) {
+            Event::on(
+                Plugins::class,
+                Plugins::EVENT_AFTER_LOAD_PLUGINS,
+                function (Event $event) {
+                    $twig = Craft::$app->getView()->getTwig();
+                    Setup::init($twig, '/_components');
+                }
+            );
+        }
+        
         // Custom initialization code goes here...
     }
 }

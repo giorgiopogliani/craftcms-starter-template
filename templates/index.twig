@@ -1,36 +1,51 @@
 {% extends "_layouts/site" %}
 
-{% import "_macros/ui.twig" as ui %}
-
 {% block main %}
 
-	{% if entry is defined %}
-		{% for block in entry.sections.all() %}
-			{% include '_blocks/' ~ block.type ~ '.twig' ignore missing %}
-		{% endfor %}
-	{% endif %}
+	<div class="space-y-24 py-24">
 
-	<div class="container mx-auto">
-		<div class="px-6 py-8">
-			<div class="text-black bg-white p-24 shadow-lg rounded-sm text-center">
-				<div class="mb-6">
-					{{ ui.title('Hello, World!') }}
-				</div>
-				<div class="space-x-0 space-y-2 md:space-y-0 md:space-x-2">
-					{{ ui.button('Build something!') }}
-					{{ ui.button('Amazing!', 'text-white bg-blue-500 hover:bg-blue-600 focus:ring-blue-500') }}
-				</div>
-			</div>
-		</div>
-	</div>
+    {% if entry is defined %}
+      {% for block in entry.sections.all() %}
+        {% include '_blocks/' ~ block.type ~ '.twig' ignore missing %}
+      {% endfor %}
+    {% endif %}
 
-	{% include '_blocks/text.twig' with { 
-    block: { 
-      flip: false,
-      heading: 'Cum sociis natoque penatibus et magnis dis parturient.',
-      body: 'Ut enim ad minim veniam, quis nostrud exercitation. Curabitur blandit tempus ardua ridiculus sed magna. Quid securi etiam tamquam eu fugiat nulla pariatur.
-      Plura mihi bona sunt, inclinet, amari petere vellent. Ullamco laboris nisi ut aliquid ex ea commodi consequat. Fictum, deserunt mollit anim laborum astutumque! Phasellus laoreet lorem vel dolor tempus vehicula. Tityre, tu patulae recubans sub tegmine fagi dolor. Curabitur est gravida et libero vitae dictum.'
-    } 
-  } %}
+    <x-container>
+      <div class="h-112 text-black bg-white space-y-6 p-24 shadow-md rounded text-center">
+        <x-title>
+          Hello, World!
+        </x-title>
+        <div class="space-x-0 space-y-2 md:space-y-0 md:space-x-2">
+          <x-button type="button" class="text-white bg-green-500 hover:bg-green-600 focus:ring-green-500">
+            Build something!
+          </x-button>
+          <x-button type="button" class='text-white bg-blue-500 hover:bg-blue-600 focus:ring-blue-500'>
+            Amazing!
+          </x-button>
+        </div>
+      </div>
+    </x-container>
+
+    <x-container>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-black bg-white rounded shadow-md">
+        <div class="space-y-6 p-24">
+          <x-title>
+            Idque Caesaris facere voluntate liceret: sese habere.
+          </x-title>
+          <div class="prose">
+            <p>
+              Hi omnes lingua, institutis, legibus inter se differunt. Etiam habebis sem
+              dicantur magna mollis euismod. Curabitur blandit tempus ardua ridiculus sed
+              magna. Quo usque tandem abutere, Catilina, patientia nostra? Nec dubitamus
+              multa iter quae et nos invenerat. Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-6 aspect-w-16 aspect-h-10">
+          <img src="https://source.unsplash.com/random" alt="" class="object-cover">
+        </div>
+      </div>
+    </x-container>
+  </div>
 
 {% endblock %}

@@ -3,7 +3,7 @@ namespace Deployer;
 require 'recipe/common.php';
 
 /**
- * Run an craft command.
+ * Run a craft command.
  *
  * Supported options:
  *
@@ -67,10 +67,6 @@ set('writable_dirs', [
 |--------------------------------------------------------------------------
 */
 
-set('upload_path', '/path/to/remote/');
-
-set('upload_vendors', true);
-
 set('upload_options', function () {
     $options = [
         '--exclude=.git',
@@ -111,13 +107,10 @@ task('craft:migrate', craft('migrate/all'))->once();
 |--------------------------------------------------------------------------
 */
 
-set('default_stage', 'staging');
-
 host('my.host.name') 
+    ->user('root') // remote server username 
     ->set('deploy_path', '/path/to/remote')
-    ->set('branch', 'master')
-    ->stage('staging')
-    ->user('root'); // remote server username 
+    ->set('branch', 'master');
 
 /*
 |--------------------------------------------------------------------------
@@ -126,7 +119,6 @@ host('my.host.name')
 */
 
 desc('Upload Strategy');
-
 task('deploy', [
     'deploy:info',
     'deploy:prepare',
