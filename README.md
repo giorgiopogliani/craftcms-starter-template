@@ -1,68 +1,82 @@
 # Craftcms Starter Template
 
-![photo_2021-03-02 11 52 51](https://user-images.githubusercontent.com/28866565/109638108-e59e7f00-7b4d-11eb-88f6-601c98bd101c.jpeg)
-
-## Components/Templates
-
-- Title
-- Button
-- Pagination
-- Image
-- Links
-- Posts with pagination
-- Header with responsive menu
-- Footer
-
-All the styles is done with `tailwindcss` framework and all the configuration is already done with the help of `laravel-mix`. 
-When developing your theme you can use `yarn watch` and browsersync is already configured. The `PRIMARY_SITE_URL` will be used as proxy for browsersync to connect to reach the website, but you can edit this behaviour in the `webpack.mix.js`.
-
-```
-PRIMARY_SITE_URL="http://url-to-my-site.test"
-```
-
-## Plugins
-
-This is a simple CraftCMS template with a few usefull plugins already installed: 
-``` 
-"craftcms/redactor": "2.8.5",
-"ether/seo": "3.6.7",
-"pennebaker/craft-architect": "2.4.1",
-"sebastianlenz/linkfield": "1.0.25",
-```
+Simple craft cms starter template fully responsive, built with Tailwind CSS, AlpineJS 3.0, ViteJS and Twig Components (like Laravel Blade Components but for twig).
 
 ## Start
-
-```
-git clone https://github.com/giorgiopogliani/craftcms-starter-template.git website
-cd website
-composer install 
-cp .env.example .env
-php craft setup/security-key
-mysql -uroot -p -e "create database example"
-```
-
-or you can also use composer
-
 ```
 composer create-project giorgiopogliani/craftcms-starter-template --stability=dev website
 ```
 
-Edit your `.env` to match your configuration.
+Copmlete the setup or edit your manually update your `.env` file to match your configuration. To manually install craft run this command.
 
 ```
 php craft install/craft 
+```
+
+After installing craft install the vite plugin, then you can install dependencies and start vite dev server.
+```
+php craft plugin/install vite
 npm install
-npm run watch
+npm run dev
+```
+
+If your environment is dev, the vite plugin will try to access the dev server, in production the vite plugin will try to access compiled assets. More info at [https://nystudio107.com/docs/vite/](https://nystudio107.com/docs/vite)
+
+## Macros
+- Forms
+- Image
+- Menu
+- Image
+- Pagination
+- Title
+
+## Components with [Twig Components](https://github.com/giorgiopogliani/twig-components)
+- container
+- title
+- button
+- logo
+
+## Blocks
+- text: two columns layout section
+
+## Pages
+- 404
+- 503
+- Posts (entry, index and item)
+
+## Partials (in _layoyts)
+- favicon (with asset field in globals)
+- footer
+- header
+- seo (ether/seo plugin)
+
+## Extensions
+added functions, available globally with a twig extension, you can add your own at `modules/extensions\UtilsExtension.php`
+- is_homepage
+
+## Preview
+![craftcms-starter-template](https://user-images.githubusercontent.com/28866565/126156641-a7009300-316b-49fa-8010-82d421e8035a.png)
+
+## Plugins
+
+List of preinstalled plugins to solve common task when building a website.
+``` 
+craftcms/redactor 
+ether/seo 
+nystudio107/craft-vite
+pennebaker/craft-architect 
+performing/twig-components 
+sebastianlenz/linkfield 
 ```
 
 ## Deploy
 
-#### deplpy.sh
-You can use the deplpy.sh bash script. It's just a simple wrapper arouend rsync and lftp to push files to a remote server. 
+### deploy.sh
+Very simple script to upload all files to a remote location. It works as a wrapper of lftp or rsync. You can update the configuration at the start of the file.
 
-#### Nod
-You can check out my other simple utility, written in php and can be installed globaly, it's still a work in progress though: [https://github.com/giorgiopogliani/nod](https://github.com/giorgiopogliani/nod).
-
-#### deployphp/deployer
+### deployphp/deployer
 You can find a deploy.php that work with [deployer](https://github.com/deployphp/deployer), a zero down-time deploy utilty. You should update the configuration with your deatails to make it work. In the `.github` folder there is also a deploy.yml to deploy with github actions.
  
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
