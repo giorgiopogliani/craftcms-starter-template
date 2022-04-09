@@ -16,7 +16,7 @@
     "ether/seo": "3.7.3",
     "nystudio107/craft-vite": "^1.0",
     "pennebaker/craft-architect": "2.4.2",
-    "performing/twig-components": "^0.4.0",
+    "performing/twig-components": "^0.5.0",
     "sebastianlenz/linkfield": "1.0.25",
     "vlucas/phpdotenv": "^3.4.0"
   },
